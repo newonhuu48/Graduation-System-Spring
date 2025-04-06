@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <title>Graduation System</title>
+
+  <style>
+    * {
+      background-color: lightgray;
+    }
+
+    .form {
+      display:flex;
+      border: 3px solid black;
+      margin: 0 auto;
+      width: 200px;
+    }
+
+
+    .form * {
+      margin: 0 auto;
+    }
+
+
+    .btn {
+      margin: 0 auto;
+      width: 40%;
+    }
+
+    .error {
+      color: red;
+    }
+
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+
+
+<h1>Student Edit:</h1>
+
+<div class="form">
+  <form  action="#" th:action="@{/students/update/{id}(id=${student.id})}" th:object="${student}" method="post">
+
+
+    First Name: <input th:field="*{firstName}" id="first_name" type="text">
+    <span class="error" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}">First Name Error</span>
+
+    Last Name: <input th:field="*{lastName}" id="last_name" type="text">
+    <span class="error" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}">Last Name Error</span>
+
+
+    <input class="btn" type="submit" name="update" value="Update">
+
+
+  </form>
+</div>
+
+</body>
+</html>

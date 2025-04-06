@@ -1,0 +1,65 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Graduation System</title>
+
+  <style>
+    * {
+      background-color: lightgray;
+    }
+
+    .form {
+      display:flex;
+      border: 3px solid black;
+      margin: 0 auto;
+      width: 200px;
+    }
+
+
+    .form * {
+      margin: 0 auto;
+    }
+
+
+    .btn {
+      margin: 0 auto;
+      width: 40%;
+    }
+
+    #error {
+      color: red;
+    }
+
+    h1 {
+      width: 100%;
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+
+
+<body>
+
+
+<h1>Request Substring Search:</h1>
+
+<div class="form">
+  <form action="#" th:action="@{/requests/substr-search}" method="get">
+
+
+    Title Substring: <input id="title" th:name="substr" type="text">
+
+
+    <input class="btn" type="submit" name="update" value="Search">
+
+
+  </form>
+</div>
+
+
+</body>
+</html>

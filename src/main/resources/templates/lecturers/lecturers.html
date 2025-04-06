@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Graduation System</title>
+
+    <style>
+        * {
+            background-color: lightgray;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .logout {
+            background-color: #0c0101;
+        }
+
+
+        #contact-container * {
+            width: 100%;
+            height: 20%;
+        }
+
+        #error {
+            color:red;
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+
+        table {
+            table-layout: fixed;
+            border: 1px solid green;
+            width: 90%;
+        }
+        table * {
+            border: 1px solid green;
+            overflow-wrap: anywhere;
+        }
+
+        table td {
+            text-align: center;
+        }
+
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: gray;
+        }
+
+        ul * {
+            background-color: gray;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 40px;
+            text-decoration: none;
+        }
+
+
+        .edit {
+            background-color: lightblue;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        .delete {
+            background-color: coral;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body>
+<h1>Lecturers View</h1>
+
+<ul>
+    <li> <a th:href="@{'/lecturers'}">Lecturers View</a> </li>
+    <li> <a th:href="@{'lecturers/create-lecturer'}">Add Lecturer</a> </li>
+</ul>
+
+
+<span class="float-right">Logged in as: <?php echo "<strong>" . $user . "</strong>" ?></span> <br>
+
+
+<form action="../scripts/logout.php" method="post">
+    <input class="float-right" type="submit" name="logout" value="Logout">
+</form>
+
+
+<div id="contact-container">
+
+    <p>
+
+    </p>
+
+
+
+    <table id="container">
+        <tr>
+            <th>Id</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Position</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <tr th:each="lecturer : ${lecturers}">
+            <td th:text="${lecturer.id}"></td>
+            <td th:text="${lecturer.firstName}"></td>
+            <td th:text="${lecturer.lastName}"></td>
+            <td th:text="${lecturer.position}"></td>
+            <td> <a class="edit" th:href="@{'/lecturers/edit-lecturer/'+${lecturer.id} }">Edit</a> </td>
+            <td> <a class="delete" th:href="@{'lecturers/delete/'+${lecturer.id} }">Delete</a> </td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>

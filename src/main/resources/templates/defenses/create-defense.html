@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Graduation System</title>
+
+    <style>
+        * {
+            background-color: lightgray;
+        }
+
+        .form {
+            display:flex;
+            border: 3px solid black;
+            margin: 0 auto;
+            width: 200px;
+        }
+
+
+        .form * {
+            margin: 0 auto;
+        }
+
+
+        .btn {
+            margin: 0 auto;
+            width: 40%;
+        }
+
+        #error {
+            color: red;
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+
+
+<h1>Defense Add:</h1>
+
+<div class="form">
+    <form action="#" th:action="@{/defenses/create}" th:object="${defense}" method="post">
+
+
+        Date: <input id="date" th:field="*{date}" type="date" th:value="*{date}">
+        <span class="error" th:if="${#fields.hasErrors('date')}" th:errors="*{date}">Grade Error</span>
+
+        Grade: <input id="student_id" th:field="*{grade}" type="number" min="2" max="6"> <br>
+        <span class="error" th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}">Grade Error</span>
+
+
+        Approved ID: <input id="lecturer_id" th:field="*{approved.id}" type="text">
+
+
+        <input class="btn" type="submit" name="update" value="Add">
+
+
+    </form>
+</div>
+
+
+</body>
+</html>

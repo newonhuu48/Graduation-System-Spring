@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Please Sign In</title>
+
+    <style>
+        * {
+            background-color: lightgray;
+        }
+
+        .form {
+            display:flex;
+            border: 3px solid black;
+            margin: 0 auto;
+            width: 200px;
+        }
+
+
+        .form * {
+            margin: auto;
+        }
+
+
+        .btn {
+            width: 40%;
+        }
+
+        #error {
+            color: red;
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+
+<h1>Online Hospital</h1>
+
+<div class="form">
+    <form method="POST" action="main.php">
+
+        Username: <input type="text" name="user">
+        Password: <input type="password" name="pass">
+
+        <input class="btn" type="submit" name="login" value="Login">
+        <input class="btn" type="submit" name="register" value="Register"><br>
+
+    </form>
+</div>
+
+</body>
+</html>

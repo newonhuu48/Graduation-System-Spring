@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head"></head>
+<body>
+<header th:replace="fragments :: header"></header>
+<h4>Registered Schools:</h4>
+<div class="col-6">
+    <h3 th:unless="${schools} and ${schools.size()}">There are no schools!</h3>
+    <table th:if="${schools.size()>0}" class="table table-hover">
+        <th>Id</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        <tr th:each="school : ${schools}">
+            <td th:text="${school.id}"></td>
+            <td th:text="${school.name}"></td>
+            <td><a class="btn btn-info" th:href="@{'/schools/edit-school/'+${school.id}}">Edit</a></td>
+            <td><a class="btn btn-danger" th:href="@{'/schools/delete/'+${school.id}}">Delete</a></td>
+        </tr>
+    </table>
+</div>
+<footer th:replace="fragments :: footer"></footer>
+</body>
+</html>

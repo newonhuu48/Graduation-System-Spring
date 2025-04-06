@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Graduation System</title>
+
+    <style>
+        * {
+            background-color: lightgray;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .logout {
+            background-color: #0c0101;
+        }
+
+
+        #contact-container * {
+            width: 100%;
+            height: 20%;
+        }
+
+        #error {
+            color:red;
+        }
+
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+
+        table {
+            table-layout: fixed;
+            border: 1px solid green;
+            width: 90%;
+        }
+        table * {
+            border: 1px solid green;
+            overflow-wrap: anywhere;
+        }
+
+        table td {
+            text-align: center;
+        }
+
+
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: gray;
+        }
+
+        ul * {
+            background-color: gray;
+        }
+
+        li {
+            float: left;
+        }
+
+        li a {
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 20px 40px;
+            text-decoration: none;
+        }
+
+
+        .edit {
+            background-color: lightblue;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+
+        .delete {
+            background-color: coral;
+            width: 100%;
+            display: block;
+            text-align: center;
+        }
+    </style>
+</head>
+
+
+<body>
+<h1>Defenses View</h1>
+
+<ul>
+    <li> <a th:href="@{'/defenses'}">Defenses View</a> </li>
+    <li> <a th:href="@{'defenses/create-defense'}">Add Defense</a> </li>
+</ul>
+
+
+<span class="float-right">Logged in as: <?php echo "<strong>" . $user . "</strong>" ?></span> <br>
+
+
+<form action="../scripts/logout.php" method="post">
+    <input class="float-right" type="submit" name="logout" value="Logout">
+</form>
+
+
+<div id="contact-container">
+
+    <p>
+
+    </p>
+
+
+
+    <table id="container">
+        <tr>
+            <th>Id</th>
+            <th>Date</th>
+            <th>Grade</th>
+            <th>Approved ID</th>
+            <th></th>
+            <th></th>
+        </tr>
+
+        <tr th:each="defense : ${defenses}">
+            <td th:text="${defense.id}"></td>
+            <td th:text="${defense.date}"></td>
+            <td th:text="${defense.grade}"></td>
+            <!-- <td></td> -->
+            <td th:text="${defense.approved.id}"></td>
+            <td> <a class="edit" th:href="@{'/defenses/edit-defense/'+${defense.id} }">Edit</a> </td>
+            <td> <a class="delete" th:href="@{'defenses/delete/'+${defense.id} }">Delete</a> </td>
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+</html>
